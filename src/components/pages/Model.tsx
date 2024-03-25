@@ -7,7 +7,7 @@ type ModelPropsType = {
 }
 const Model = (props: ModelPropsType) => {
     const params = useParams();
-    const currentModel = props.array.find(el => el.id === params.id);
+    const currentModel = props.array.find(el => el.id === Number(params.id));
 
     return (
         <div style={{textAlign: "center"}}>

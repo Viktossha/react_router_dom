@@ -4,17 +4,11 @@ import pumaModel2 from './../../assets/vekisg31q9fs14jd1ifra0aen7dra0ee.jpg'
 import pumaModel3 from './../../assets/110385100299.jpg'
 import {S} from './_styles';
 import {Link} from 'react-router-dom';
+import {ModelItem} from "./Adidas";
 
-export type ModelItem = {
-    id: string
-    model: string;
-    collection: string;
-    price: string;
-    picture: string;
-}
 export const pumaArr: ModelItem[] = [
     {
-        id: '1',
+        id: 1,
         model: 'Puma Suede Xl',
         collection: 'new collection1',
         price: '100200$',
@@ -22,14 +16,14 @@ export const pumaArr: ModelItem[] = [
 
     },
     {
-        id: '2',
+        id: 2,
         model: 'Puma-180, Vapor',
         collection: 'new collection22',
         price: '200300$',
         picture: pumaModel2
     },
     {
-        id: '3',
+        id: 3,
         model: 'PUMA Palermo Lth',
         collection: 'new collection333',
         price: '300400$',

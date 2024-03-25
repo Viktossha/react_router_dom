@@ -6,7 +6,7 @@ import {Link, Route, Routes} from "react-router-dom";
 import Model from "./Model";
 
 export type ModelItem= {
-    id: string
+    id: number
     model: string;
     collection: string;
     price: string;
@@ -14,7 +14,7 @@ export type ModelItem= {
 }
 export const adidasArr:ModelItem[] = [
     {
-        id: '1',
+        id: 1,
         model: 'ADIDAS ADIFOM TRXN',
         collection: 'new collection1',
         price: '100200$',
@@ -22,14 +22,14 @@ export const adidasArr:ModelItem[] = [
 
     },
     {
-        id: '2',
+        id: 2,
         model: 'ADIDAS ADIFOM SUPER',
         collection: 'new collection22',
         price: '200300$',
         picture: adidasModel2
     },
     {
-        id: '3',
+        id: 3,
         model: 'ADIDAS SUPER SUPERSKI',
         collection: 'new collection333',
         price: '300400$',
