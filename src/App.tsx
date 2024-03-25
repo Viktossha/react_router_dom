@@ -53,7 +53,7 @@ function App() {
                 </div>
                 <div className={styles.content}>
                     <Routes>
-                        <Route path='/' element={<Navigate to='/page1'/>}></Route>
+                        <Route path='/' element={<Navigate to={PATH.PATH1}/>}></Route>
 
                         <Route path={PATH.PATH1} element={<Adidas/>}></Route>
                         <Route path={PATH.PATH2} element={<Puma/>}></Route>
