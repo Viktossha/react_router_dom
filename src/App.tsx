@@ -7,26 +7,34 @@ import {Navigate, NavLink, Route, Routes} from 'react-router-dom';
 import {Error404} from "./components/pages/Error404";
 import {S} from "./components/pages/_styles"
 
+const PATH = {
+    PAGE1: '/page1',
+    PAGE2: '/page2',
+    PAGE3: '/page3',
+    ERROR404: '/404'
+} as const
+
 function App() {
     return (
         <div>
             <div className={styles.header}><h1>HEADER</h1></div>
             <div className={styles.body}>
                 <div className={styles.nav}>
-                    <S.NavWrapper><NavLink to="/page1">Page 1</NavLink></S.NavWrapper>
-                    <S.NavWrapper><NavLink to="/page2">Page 2</NavLink></S.NavWrapper>
-                    <S.NavWrapper><NavLink to="/page3">Page 3</NavLink></S.NavWrapper>
+                    <S.NavWrapper><NavLink to={PATH.PAGE1}>Page 1</NavLink></S.NavWrapper>
+                    <S.NavWrapper><NavLink to={PATH.PAGE2}>Page 2</NavLink></S.NavWrapper>
+                    <S.NavWrapper><NavLink to={PATH.PAGE3}>Page 3</NavLink></S.NavWrapper>
                 </div>
                 <div className={styles.content}>
                     <Routes>
-                        <Route path="/" element={<Navigate to={"/page1"}/>}/>
+                        <Route path="/" element={<Navigate to={PATH.PAGE1}/>}/>
 
-                        <Route path="/page1" element={<PageOne/>}/>
-                        <Route path="/page2" element={<PageTwo/>}/>
-                        <Route path="/page3" element={<PageThree/>}/>
+                        <Route path={PATH.PAGE1} element={<PageOne/>}/>
+                        <Route path={PATH.PAGE2} element={<PageTwo/>}/>
+                        <Route path={PATH.PAGE3} element={<PageThree/>}/>
 
-                        <Route path="/404" element={<Error404/>}/>
-                        <Route path="/*" element={<Navigate to={"/404"}/>}/>
+                        {/*<Route path={PATH.ERROR404} element={<Error404/>}/>*/}
+                        {/*<Route path="/*" element={<Navigate to={PATH.ERROR404}/>}/>*/}
+                        <Route path="/*" element={<Error404/>}/>
                     </Routes>
 
                 </div>
