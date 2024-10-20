@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from "./components/Site.module.css";
 import {PageOne} from "./components/pages/PageOne";
 import {PageTwo} from "./components/pages/PageTwo";
 import {PageThree} from "./components/pages/PageThree";
 import {Navigate, NavLink, Route, Routes} from 'react-router-dom';
 import {Error404} from "./components/pages/Error404";
-
+import {S} from "./components/pages/_styles"
 
 function App() {
     return (
@@ -13,9 +13,9 @@ function App() {
             <div className={styles.header}><h1>HEADER</h1></div>
             <div className={styles.body}>
                 <div className={styles.nav}>
-                    <div><NavLink to="/page1" className={({ isActive }) => isActive ? styles.activeNavLink : styles.navLink}>Page 1</NavLink></div>
-                    <div><NavLink to="/page2" className={({ isActive }) => isActive ? styles.activeNavLink : styles.navLink}>Page 2</NavLink></div>
-                    <div><NavLink to="/page3" className={({ isActive }) => isActive ? styles.activeNavLink : styles.navLink}>Page 3</NavLink></div>
+                    <S.NavWrapper><NavLink to="/page1">Page 1</NavLink></S.NavWrapper>
+                    <S.NavWrapper><NavLink to="/page2">Page 2</NavLink></S.NavWrapper>
+                    <S.NavWrapper><NavLink to="/page3">Page 3</NavLink></S.NavWrapper>
                 </div>
                 <div className={styles.content}>
                     <Routes>
