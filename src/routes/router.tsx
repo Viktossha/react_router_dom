@@ -13,6 +13,8 @@ import {Puma} from "../components/pages/Puma";
 import {Abibas} from "../components/pages/Abibas";
 import {Prices} from "../components/pages/Prices";
 import {Model} from "../components/pages/Model";
+import {ProtectedPage} from "../components/pages/ProtectedPage";
+import {ProtectedRoute} from "./ProtectedRoute";
 
 
 const PATH = {
@@ -49,6 +51,18 @@ export const router = createBrowserRouter([
             {
                 path: PATH.MODEL,
                 element: <Model />,
+            },
+            {
+                path: '/protected',
+                element: (
+                    <ProtectedRoute>
+                        <ProtectedPage/>
+                    </ProtectedRoute>
+                )
+            },
+            {
+                path: PATH.ERROR404,
+                element: <Error404 />,
             },
         ]
     }

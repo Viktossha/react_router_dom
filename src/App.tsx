@@ -8,6 +8,7 @@ import {Error404} from "./components/pages/Error404";
 import {S} from "./components/pages/_styles"
 import {Model} from "./components/pages/Model";
 import {Prices} from "./components/pages/Prices";
+import {ProtectedPage} from "./components/pages/ProtectedPage";
 
 const PATH = {
     PAGE1: '/adidas',
@@ -27,6 +28,7 @@ function App() {
                     <S.NavWrapper><NavLink to={PATH.PAGE2}>Puma</NavLink></S.NavWrapper>
                     <S.NavWrapper><NavLink to={PATH.PAGE3}>Abibas</NavLink></S.NavWrapper>
                     <S.NavWrapper><NavLink to={PATH.PRICES}>Цены для оптовиков</NavLink></S.NavWrapper>
+                    <S.NavWrapper><NavLink to='protected'>ProtectedPage</NavLink></S.NavWrapper>
                 </div>
                 <div className={styles.content}>
                     {/*<Routes>*/}
