@@ -4,7 +4,7 @@ import {
     createBrowserRouter,
     RouterProvider,
     Route,
-    Link,
+    Link, Navigate,
 } from "react-router-dom";
 import App from "../App";
 import {Error404} from "../components/pages/Error404";
@@ -15,6 +15,7 @@ import {Prices} from "../components/pages/Prices";
 import {Model} from "../components/pages/Model";
 import {ProtectedPage} from "../components/pages/ProtectedPage";
 import {ProtectedRoute} from "./ProtectedRoute";
+import {Login} from "../components/pages/Login";
 
 
 const PATH = {
@@ -23,14 +24,15 @@ const PATH = {
     ABIBAS: '/abibas',
     PRICES: '/prices',
     ERROR404: '/404',
-    MODEL: '/:model/:id'
+    MODEL: '/:model/:id',
+    LOGIN: '/login'
 } as const
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <App/>,
-        errorElement: <Error404/>,
+        errorElement: <Navigate to={PATH.ERROR404}/>,
         children: [
             {
                 path: PATH.ADIDAS,
@@ -63,6 +65,10 @@ export const router = createBrowserRouter([
             {
                 path: PATH.ERROR404,
                 element: <Error404 />,
+            },
+            {
+                path: PATH.LOGIN,
+                element: <Login />,
             },
         ]
     }
