@@ -1,10 +1,10 @@
 import * as React from "react";
-import { createRoot } from "react-dom/client";
+import {createRoot} from "react-dom/client";
 import {
     createBrowserRouter,
     RouterProvider,
     Route,
-    Link, Navigate,
+    Link, Navigate, RouteObject, Outlet,
 } from "react-router-dom";
 import App from "../App";
 import {Error404} from "../components/pages/Error404";
@@ -16,6 +16,7 @@ import {Model} from "../components/pages/Model";
 import {ProtectedPage} from "../components/pages/ProtectedPage";
 import {ProtectedRoute} from "./ProtectedRoute";
 import {Login} from "../components/pages/Login";
+import type {ReactElement} from "react";
 
 
 const PATH = {
@@ -28,6 +29,55 @@ const PATH = {
     LOGIN: '/login'
 } as const
 
+const publicRoutes: RouteObject[] = [
+    // {
+    //     path: '/',
+    //     element: <Adidas/>,
+    // },
+    {
+        path: PATH.ADIDAS,
+        element: <Adidas/>,
+    },
+    {
+        path: PATH.PUMA,
+        element: <Puma/>,
+    },
+    {
+        path: PATH.ABIBAS,
+        element: <Abibas/>,
+    },
+    {
+        path: PATH.PRICES,
+        element: <Prices/>,
+    },
+    {
+        path: PATH.MODEL,
+        element: <Model/>,
+    },
+    {
+        path: PATH.ERROR404,
+        element: <Error404/>,
+    },
+    {
+        path: PATH.LOGIN,
+        element: <Login/>,
+    },
+]
+
+const privateRoutes: RouteObject[] = [
+    {
+        path: '/protected',
+        element: (
+            <ProtectedPage/>
+        )
+    },
+]
+
+export const PrivateRoutes = () => {
+    const isAuth = true
+    return isAuth ? <Outlet/> : <Navigate to={'/login'}/>
+};
+
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -35,41 +85,10 @@ export const router = createBrowserRouter([
         errorElement: <Navigate to={PATH.ERROR404}/>,
         children: [
             {
-                path: PATH.ADIDAS,
-                element: <Adidas />,
+                element: <PrivateRoutes/>,
+                children: privateRoutes
             },
-            {
-                path: PATH.PUMA,
-                element: <Puma />,
-            },
-            {
-                path: PATH.ABIBAS,
-                element: <Abibas />,
-            },
-            {
-                path: PATH.PRICES,
-                element: <Prices />,
-            },
-            {
-                path: PATH.MODEL,
-                element: <Model />,
-            },
-            {
-                path: '/protected',
-                element: (
-                    <ProtectedRoute>
-                        <ProtectedPage/>
-                    </ProtectedRoute>
-                )
-            },
-            {
-                path: PATH.ERROR404,
-                element: <Error404 />,
-            },
-            {
-                path: PATH.LOGIN,
-                element: <Login />,
-            },
+            ...publicRoutes
         ]
     }
 ]);
